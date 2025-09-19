@@ -1,7 +1,4 @@
-/* 
-Reset
- */
-
+/* RESET & BASE */
 * {
     margin: 0;
     padding: 0;
@@ -10,14 +7,40 @@ Reset
 
 html {
     font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
+    background: radial-gradient(circle at 20% 30%, #ff6b00 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, #ff3c00 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, #ff9f1c 0%, transparent 50%);
     background-color: #0d0d0d;
+    background-blend-mode: screen;
+    background-size: 200% 200%;
+    animation: moveBackground 8s ease-in-out infinite;
     color: #fff;
-    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
 }
 
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+
+    33% {
+        background-position: 100% 50%, 50% 0%, 0% 100%;
+    }
+
+    66% {
+        background-position: 50% 100%, 0% 50%, 100% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+}
+
+/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -28,26 +51,213 @@ body {
     padding: 2rem;
 }
 
+.hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    text-shadow: 0 0 15px rgba(255, 107, 0, 0.6);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* BADGE URGENZA */
+.limited-offer {
+    background: linear-gradient(90deg, #ff3c00, #ff6b00);
+    color: #fff;
+    font-weight: bold;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    animation: pulseBadge 1.5s infinite alternate;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 10px rgba(255, 100, 0, 0.7);
+}
+
+@keyframes pulseBadge {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 6px rgba(255, 80, 0, 0.7);
+    }
+
+    100% {
+        transform: scale(1.08);
+        box-shadow: 0 0 20px rgba(255, 120, 0, 0.9);
+    }
+}
+
+/* PREZZO */
 .price {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #ff6b00;
 }
 
+/* COUNTDOWN */
+.countdown {
+    display: flex;
+    gap: 1rem;
+    margin: 1.8rem 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    width: 85px;
+    height: 85px;
+    border: 3px solid #ff6b00;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a1a;
+    box-shadow: 0 0 12px rgba(255, 107, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.time-box:hover {
+    transform: scale(1.05);
+}
+
+.time-value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ff6b00;
+}
+
+.time-label {
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+/* CTA */
 .btn-cta {
-    background-color: #ff6b00;
+    background: linear-gradient(90deg, #ff6b00, #ff3c00);
     border: none;
     font-weight: bold;
-    padding: 0.8rem 1.5rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 50px;
+    box-shadow: 0 0 12px rgba(255, 107, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .btn-cta:hover {
-    background-color: #e55c00;
+    transform: scale(1.06);
+    box-shadow: 0 0 20px rgba(255, 60, 0, 0.8);
 }
 
-.form-section {
+/* ABOUT ME */
+.about-me {
     background: #1a1a1a;
-    padding: 2rem;
     border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.2);
+}
+
+.about-me h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.about-me p {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+}
+
+.about-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+    margin-bottom: 1rem;
+    border: 3px solid #ff6b00;
+}
+
+/* FORM */
+.contact-form .form-control {
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.8rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    border-color: #ff6b00;
+    box-shadow: 0 0 8px rgba(255, 107, 0, 0.4);
+    outline: none;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* WHATSAPP */
+.whatsapp-box {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
     margin-top: 2rem;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.5);
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.8);
+    transform: scale(1.05);
+}
+
+/* TESTIMONIANZE */
+.testimonials h2 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 12px rgba(255, 107, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 18px rgba(255, 107, 0, 0.4);
+}
+
+.testimonial-card .quote {
+    font-style: italic;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.testimonial-card .author-name {
+    font-weight: bold;
+    color: #ff6b00;
+    font-size: 0.95rem;
+    display: block;
+    text-align: right;
 }
